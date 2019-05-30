@@ -11,6 +11,12 @@
 
    <bean id = "user" class = "com.supmount.soru.User" scope = "prototype" init-method = "init" destroy-method = "destroy">
 		<property name = "lastName" value = "Last name"/>
+      	<property name = "names">
+        	<list>
+            	<value>JOE</value>
+            	<value>M</value>
+         	</list>
+      </property>
    </bean>
 
    <bean id = "answer" class = "com.supmount.soru.Answer" scope = "prototype" init-method = "init" destroy-method = "destroy">

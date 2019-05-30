@@ -17,7 +17,7 @@ public class SoruApplication {
 			User user = (User) context.getBean("user");
 			user.setLastName("DOE");
 
-			System.out.println(user.getLastName());
+			System.out.println(user.getName());
 		}
 
 		Question obj2 = (Question) context.getBean("question");
