@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+   <bean id = "question" class = "com.supmount.soru.Question" scope = "prototype" init-method = "init" destroy-method = "destroy">
+		<property name = "text" value = "Question text?"/>
+   </bean>
+
+   <bean id = "user" class = "com.supmount.soru.User" scope = "prototype" init-method = "init" destroy-method = "destroy">
+		<property name = "lastName" value = "Last name"/>
+   </bean>
+
+   <bean id = "answer" class = "com.supmount.soru.Answer" scope = "prototype" init-method = "init" destroy-method = "destroy">
+		<property name = "value" value = ""/>
+     	<property name = "answerQuestion">
+     		<bean id = "answerQuestion" class = "com.supmount.soru.Question"/>
+     	</property>
+   </bean>
+
+
+	<bean class = "com.supmount.soru.InitPostProcessor" />
+</beans>
