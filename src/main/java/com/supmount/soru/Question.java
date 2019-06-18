@@ -5,9 +5,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "objectType")
-@JsonSubTypes({
-	@JsonSubTypes.Type(value=ChoiceQuestion.class, name="ChoiceQuestion"),
-})
+@JsonSubTypes({ @JsonSubTypes.Type(value = ChoiceQuestion.class, name = "ChoiceQuestion"), })
 public class Question {
 	private String text;
 	private String type;
@@ -33,7 +31,7 @@ public class Question {
 	}
 
 	public void destroy() {
-		System.out.println("Bean (Question) will destroy now.");
+		System.out.println(">>>>>>>>>>>Bean (Question) will destroy now.");
 	}
 
 	@Override

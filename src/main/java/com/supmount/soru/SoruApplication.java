@@ -13,6 +13,8 @@ public class SoruApplication {
 			System.out.println(obj.getText());
 		}
 
+		System.out.println("--------------------1");
+
 		{
 			User user = (User) context.getBean("user");
 			user.setLastName("DOE");
@@ -20,10 +22,14 @@ public class SoruApplication {
 			System.out.println(user.getName());
 		}
 
+		System.out.println("--------------------2");
+
 		Question obj2 = (Question) context.getBean("question");
 		System.out.println(obj2.getText());
 
 		Answer answer = (Answer) context.getBean("answer");
+
+		System.out.println("--------------------3");
 
 		System.out.println("============================");
 		System.out.println(answer.display());
