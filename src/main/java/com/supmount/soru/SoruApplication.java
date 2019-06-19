@@ -1,7 +1,15 @@
 package com.supmount.soru;
 
+import java.util.List;
+
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.supmount.razi.ConsentType;
+import com.supmount.razi.ConsentTypeJDBCTemplate;
+import com.supmount.razi.Language;
+import com.supmount.razi.LanguageJDBCTemplate;
+import com.supmount.razi.NewConsentType;
 
 public class SoruApplication {
 	public static void main(String[] args) {
@@ -34,6 +42,39 @@ public class SoruApplication {
 		System.out.println("============================");
 		System.out.println(answer.display());
 		System.out.println("============================");
+
+		System.out.println("****************************");
+		System.out.println("****************************");
+
+		LanguageJDBCTemplate languageJDBCTemplate = (LanguageJDBCTemplate) context.getBean("languageJDBCTemplate");
+
+		List<Language> languages = languageJDBCTemplate.list();
+		languages.forEach((language) -> {
+			System.out.print("code: " + language.getCode());
+			System.out.print(", name: " + language.getName());
+			System.out.println(", native name: " + language.getNativeName());
+			System.out.println(" ");
+		});
+
+		System.out.println("****************************");
+		System.out.println("****************************");
+
+		ConsentTypeJDBCTemplate consentTypeJDBCTemplate = (ConsentTypeJDBCTemplate) context
+				.getBean("consentTypeJDBCTemplate");
+
+		NewConsentType newConsentType = new NewConsentType();
+		newConsentType.setName("daName");
+		newConsentType.setType("daType");
+		newConsentType.setRole("clinician");
+		newConsentType.setTitle("daTitle");
+
+		int ctid = consentTypeJDBCTemplate.create(newConsentType);
+
+		ConsentType consentType = consentTypeJDBCTemplate.get(ctid, "en");
+		System.out.println(consentType.toString());
+
+		System.out.println("****************************");
+		System.out.println("****************************");
 
 		context.registerShutdownHook();
 		context.close();
